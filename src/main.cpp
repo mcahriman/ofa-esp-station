@@ -3,6 +3,7 @@
 #include <ESP8266WebServer.h>
 
 #include <SampleCapability.hpp>
+#include <MHZ14ACapability.hpp>
 #include <CapabilityPool.hpp>
 
 #include <Utils.hpp>
@@ -44,11 +45,12 @@ void setup()
   Serial.println("Web server started!");
 
   capabilityPool.addCapability(new SampleCapability);
-  capabilityPool.addCapability(new SampleCapability("NonDefaultSampleCapability"));
+  capabilityPool.addCapability(new MHZ14ACapability());
 
   server.on("/", []() {
 
     std::list<pair<String,String>> result;
+    result = capabilityPool.getAllResults();
     result.push_back(make_pair("result", "OK"));
     
     page = utils_json_object(result);
@@ -63,6 +65,7 @@ void setup()
     page = utils_json_object(result);
     server.send(200, "application/json", page);
   });
+
 }
 
 void loop()

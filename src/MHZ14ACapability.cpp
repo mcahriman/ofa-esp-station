@@ -1,20 +1,19 @@
 #include "MHZ14ACapability.hpp"
 #include "Arduino.h"
 
-MHZ14ACapability::MHZ14ACapability(int rx, int tx) {
-    MHZ14ACapability(rx, tx, capabilityName);
-}
-
 MHZ14ACapability::MHZ14ACapability(int rx, int tx, String name) {
+    memset(responseBuffer,0, 9);
     serialPort = new SoftwareSerial(rx, tx);
+    serialPort->enableRx(true);
+    serialPort->setTimeout(default_timeout);
     serialPort->begin(baud);
     performReading();
     
     if(responseBuffer[8] == 0) {
         is_valid = false;
-        Serial.printf("Could not initialize MHZ Sensor on rx: %d tx: %d\n", rx, tx);
+        Serial.printf("Could not initialize MHZ Sensor on rx: %d tx: %d with response: %c\n", rx, tx,responseBuffer[8]);
     } else {
-        Serial.printf("Initialised MHZ Sensor on rx: %d tx: %d\n", rx, tx);
+        Serial.printf("Initialised MHZ Sensor on rx: %d tx: %d with response: %c\n", rx, tx,responseBuffer[8]);
     }
     
     capabilityName = name;  
@@ -35,6 +34,17 @@ int MHZ14ACapability::read_value() {
 }
 
 void MHZ14ACapability::performReading() {
+    int read_qty = 0;
     serialPort->write(MHZ14A_READ_CMD, cmd_len);
-    serialPort->readBytes(responseBuffer,cmd_len);
+    read_qty = serialPort->readBytes(responseBuffer,cmd_len);
+
+    Serial.printf("Read %d bytes from MZH\n", read_qty);
+}
+
+bool MHZ14ACapability::isValid() {
+    return is_valid;
+}
+
+String MHZ14ACapability::getName() {
+    return capabilityName;
 }
