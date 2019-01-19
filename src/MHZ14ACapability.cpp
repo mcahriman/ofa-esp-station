@@ -2,7 +2,7 @@
 #include "Arduino.h"
 
 MHZ14ACapability::MHZ14ACapability(int rx, int tx) {
-    MHZ14ACapability(rx, rx, capabilityName);
+    MHZ14ACapability(rx, tx, capabilityName);
 }
 
 MHZ14ACapability::MHZ14ACapability(int rx, int tx, String name) {
