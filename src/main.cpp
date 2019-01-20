@@ -4,6 +4,7 @@
 
 #include <SampleCapability.hpp>
 #include <MHZ14ACapability.hpp>
+#include <DHTCapability.hpp>
 #include <CapabilityPool.hpp>
 
 #include <Utils.hpp>
@@ -46,6 +47,9 @@ void setup()
 
   capabilityPool.addCapability(new SampleCapability);
   capabilityPool.addCapability(new MHZ14ACapability());
+  capabilityPool.addCapability(new DHTCapability("DHT22_T",SensorValueType::DHT_TEMP));
+  capabilityPool.addCapability(new DHTCapability("DHT22_H",SensorValueType::DHT_HUMIDITY));
+  
 
   server.on("/", []() {
 

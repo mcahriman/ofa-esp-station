@@ -22,7 +22,7 @@ class MHZ14ACapability : public ICapability {
        MHZ14ACapability(int rx = default_rx, int tx = default_tx, String name = MHZ14A_DEFAULT_NAME);
 
        MHZ14ACapability(String name) {
-           MHZ14ACapability(default_rx, default_tx, MHZ14A_DEFAULT_NAME);
+           MHZ14ACapability(default_rx, default_tx, name);
        };
 
        ~MHZ14ACapability();
