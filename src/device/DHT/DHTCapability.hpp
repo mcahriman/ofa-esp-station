@@ -1,7 +1,7 @@
 #pragma once
 
 #include <Arduino.h>
-#include <ICapability.hpp>
+#include <device/ICapability.hpp>
 #include <DHT.h>
 
 #define DHT_DEFAULT_NAME "DHT"

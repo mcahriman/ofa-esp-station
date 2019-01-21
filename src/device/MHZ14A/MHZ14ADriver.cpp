@@ -1,7 +1,7 @@
-#include "MHZ14ACapability.hpp"
+#include "MHZ14ADriver.hpp"
 #include "Arduino.h"
 
-MHZ14ACapability::MHZ14ACapability(int rx, int tx, String name) {
+MHZ14ADriver::MHZ14ADriver(int rx, int tx, String name) {
     memset(responseBuffer,0, 9);
     serialPort = new SoftwareSerial(rx, tx);
     serialPort->enableRx(true);
@@ -19,21 +19,21 @@ MHZ14ACapability::MHZ14ACapability(int rx, int tx, String name) {
     capabilityName = name;  
 }
 
-MHZ14ACapability::~MHZ14ACapability() {
+MHZ14ADriver::~MHZ14ADriver() {
     delete serialPort;
 }
 
-String MHZ14ACapability::getValue() 
+String MHZ14ADriver::getValue() 
 {
     return isValid() ? String(read_value()) : "n/a";
 }
 
-int MHZ14ACapability::read_value() {
+int MHZ14ADriver::read_value() {
     performReading();
     return responseBuffer[2] * 256 + responseBuffer[3];
 }
 
-void MHZ14ACapability::performReading() {
+void MHZ14ADriver::performReading() {
     int read_qty = 0;
     serialPort->write(MHZ14A_READ_CMD, cmd_len);
     read_qty = serialPort->readBytes(responseBuffer,cmd_len);
@@ -41,10 +41,10 @@ void MHZ14ACapability::performReading() {
     Serial.printf("Read %d bytes from MZH\n", read_qty);
 }
 
-bool MHZ14ACapability::isValid() {
+bool MHZ14ADriver::isValid() {
     return is_valid;
 }
 
-String MHZ14ACapability::getName() {
+String MHZ14ADriver::getName() {
     return capabilityName;
 }

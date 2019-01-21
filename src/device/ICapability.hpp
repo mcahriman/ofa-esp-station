@@ -6,5 +6,5 @@ class ICapability {
     public:
        virtual String getName() = 0;
        virtual String getValue() = 0;
-       virtual bool isValid() = 0;
+       virtual bool isOnline() = 0;
 };

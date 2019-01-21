@@ -1,33 +1,29 @@
 #include <Arduino.h>
 #include <ESP8266WiFi.h>
 #include <ESP8266WebServer.h>
-
-#include <SampleCapability.hpp>
-#include <MHZ14ACapability.hpp>
-#include <DHTCapability.hpp>
-#include <CapabilityPool.hpp>
-
-#include <Utils.hpp>
-#include <map>
-
 #include <functional>
+
+#include <list>
+#include <utility>
+
+#include "util/Utils.hpp"
+
 
 const char *ssid = "columbus";
 const char *password = "purpurpur42";
+
 String page = "";
 
 ESP8266WebServer server(8088);
 String header;
 
-CapabilityPool capabilityPool;
-
 void setup()
 {
 
-  WiFi.mode(WIFI_STA),
+  WiFi.mode(WIFI_STA);
 
-      // Connect to Wi-Fi network with SSID and password
-      Serial.begin(115200);
+  // Connect to Wi-Fi network with SSID and password
+  Serial.begin(115200);
   Serial.print("Connecting to ");
   Serial.println(ssid);
   WiFi.begin(ssid, password);
@@ -45,31 +41,13 @@ void setup()
   server.begin();
   Serial.println("Web server started!");
 
-  capabilityPool.addCapability(new SampleCapability);
-  capabilityPool.addCapability(new MHZ14ACapability());
-  capabilityPool.addCapability(new DHTCapability("DHT22_T",SensorValueType::DHT_TEMP));
-  capabilityPool.addCapability(new DHTCapability("DHT22_H",SensorValueType::DHT_HUMIDITY));
-  
-
   server.on("/", []() {
+    std::list<std::pair<String,String>> result;
+    result.push_back(std::make_pair("result", "OK"));
 
-    std::list<pair<String,String>> result;
-    result = capabilityPool.getAllResults();
-    result.push_back(make_pair("result", "OK"));
-    
     page = utils_json_object(result);
     server.send(200, "application/json", page);
   });
-
-  server.on("/capabilities", [] {
-    std::list<pair<String,String>> result;
-    String caps = utils_json_array(capabilityPool.getCapabilityList());
-    result.push_back(make_pair("result", "OK"));
-    result.push_back(make_pair("capabilities", caps));
-    page = utils_json_object(result);
-    server.send(200, "application/json", page);
-  });
-
 }
 
 void loop()
