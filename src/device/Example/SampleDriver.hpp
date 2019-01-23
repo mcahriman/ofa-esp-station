@@ -9,6 +9,7 @@ class SampleDriver : public IDriver
 {
  public:
    SampleDriver(String);
+   CapabilityRegistry& getCapabilities() { return capabilities;}
    String getName();
    bool isOnline();
 

@@ -7,7 +7,7 @@
 class IDriver
 {
   public:
-    virtual CapabilityRegistry getCapabilities() = 0;
+    virtual CapabilityRegistry& getCapabilities() = 0;
     virtual String getName() = 0;
     virtual bool isOnline() = 0;
 };

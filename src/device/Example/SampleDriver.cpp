@@ -21,7 +21,7 @@ String SampleDriver::getValue() {
 void SampleDriver::doSomeSampleMagic() {
     Serial.println("BOO WOO CAPABILITY MAGIC HAS OCCURED\n");
     Serial.println("Behold the serial writer you have invoked\n");
-}
+}    
 
 SampleDriver::SampleDriver(String name) {
     deviceName = name;

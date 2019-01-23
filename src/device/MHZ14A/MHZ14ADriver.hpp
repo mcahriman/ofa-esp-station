@@ -32,7 +32,7 @@ class MHZ14ADriver : public IDriver {
        bool isValid();
        String getName();
        String getValue();
-       CapabilityRegistry getCapabilities();
+       CapabilityRegistry& getCapabilities();
        bool isOnline();
        
 
