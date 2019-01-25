@@ -28,6 +28,8 @@ void setup()
 
       // Connect to Wi-Fi network with SSID and password
       Serial.begin(115200);
+  delay(1000);
+
   Serial.print("Connecting to ");
   Serial.println(ssid);
   WiFi.begin(ssid, password);
