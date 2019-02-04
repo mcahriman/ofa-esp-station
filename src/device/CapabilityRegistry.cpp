@@ -1,10 +1,6 @@
 #include "CapabilityRegistry.hpp"
 using namespace std;
 
-CapabilityRegistry::CapabilityRegistry()
-{
-}
-
 list<String> CapabilityRegistry::listCapabilities()
 {
     list<String> capabilityList;

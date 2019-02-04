@@ -1,6 +1,7 @@
 #include <Arduino.h>
 #include "SampleDriver.hpp"
 #include "device/BaseCapability.hpp"
+#include <memory>
 
 #define SAMPLE_CAP "WOOF"
 
@@ -27,5 +28,5 @@ SampleDriver::SampleDriver(String name) {
     deviceName = name;
     getWoofValueDelegate = [this] { return this->getValue(); };
     driverOnlineDelegate = [this] { return this->isOnline(); };
-    capabilities.push_back(new BaseCapability("WoofValue", getWoofValueDelegate, driverOnlineDelegate));
+    capabilities.push_back(unique_ptr<ICapability>(new BaseCapability("WoofValue", getWoofValueDelegate, driverOnlineDelegate)));
 }

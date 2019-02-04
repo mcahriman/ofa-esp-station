@@ -4,12 +4,12 @@
 #include "ICapability.hpp"
 #include <list>
 #include <utility>
+#include <memory>
 
 using namespace std;
 
-class CapabilityRegistry : public std::list<ICapability*> {
+class CapabilityRegistry : public list<unique_ptr<ICapability>> {
     public:
-        CapabilityRegistry();
         list<std::pair<String,String>> getAllReadings();
         list<String> listCapabilities();
 };
