@@ -12,7 +12,7 @@ MHZ14ACapability::MHZ14ACapability(int rx, int tx, String name)
     Serial.println("Initializing MHZ14A");
     is_valid = false;
 
-    for (int tries = 0; tries < 8; tries++)
+    for (int tries = 0; tries < 32; tries++)
     {
         performReading();
 
