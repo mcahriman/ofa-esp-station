@@ -1,9 +1,11 @@
 #pragma once
 
-#include <Arduino.h>
+#include <string>
 #include <list>
 #include <map>
 #include <utility>
 
-String utils_json_array(std::list<String>);
-String utils_json_object(std::list<std::pair<String, String>>);
+using namespace std;
+
+string utils_json_array(std::list<string>);
+string utils_json_object(std::list<std::pair<string, string>>);

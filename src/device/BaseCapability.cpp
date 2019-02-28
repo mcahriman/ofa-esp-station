@@ -1,16 +1,16 @@
 #include "BaseCapability.hpp"
-#include <Arduino.h>
+#include <functional>
 
-BaseCapability::BaseCapability(String name, std::function<String()> valueFunc, std::function<bool()> onlineFunc) {
+BaseCapability::BaseCapability(string name, std::function<string()> valueFunc, std::function<bool()> onlineFunc) {
     valueDelegate = valueFunc;
     onlineDelegate = onlineFunc;
 }
 
-String BaseCapability::getName() {
+string BaseCapability::getName() {
     return name;
 }
 
-String BaseCapability::getValue() {
+string BaseCapability::getValue() {
     return valueDelegate();
 }
 

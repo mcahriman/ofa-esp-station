@@ -1,18 +1,14 @@
-#include <Arduino.h>
-#include <ESP8266WiFi.h>
 #include <functional>
-
 #include "device/Example/SampleDriver.hpp"
 
-String page = "";
+#include "espressif/esp_common.h"
+#include "uart.h"
 
-String header;
+using namespace std;
 
-void setup()
-{
-}
 
-void loop()
-{
-  delay(2000);
+extern "C"
+void user_init(void) {
+   UART_SetBaudrate(UART0, 115200);
+
 }

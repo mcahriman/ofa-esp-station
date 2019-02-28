@@ -1,6 +1,6 @@
 #pragma once
 
-#include <Arduino.h>
+#include <string>
 #include "ICapability.hpp"
 #include <list>
 #include <utility>
@@ -10,6 +10,6 @@ using namespace std;
 
 class CapabilityRegistry : public list<unique_ptr<ICapability>> {
     public:
-        list<std::pair<String,String>> getAllReadings();
-        list<String> listCapabilities();
+        list<std::pair<string,string>> getAllReadings();
+        list<string> listCapabilities();
 };

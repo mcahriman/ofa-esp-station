@@ -1,7 +1,7 @@
 #pragma once
+#include <string>
 
-//TODO: get rid of arduino in api
-#include <Arduino.h>
+using namespace std;
 
 enum class ICapabilityType {
     CAP_INTERNAL,
@@ -10,8 +10,8 @@ enum class ICapabilityType {
 
 class ICapability {
     public:
-       virtual String getName() = 0;
-       virtual String getValue() = 0;
+       virtual string getName() = 0;
+       virtual string getValue() = 0;
        virtual bool isOnline() = 0;
        virtual ICapabilityType getCapabilityType() { return ICapabilityType::CAP_VALUE; };
 };

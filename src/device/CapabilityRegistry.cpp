@@ -1,9 +1,9 @@
 #include "CapabilityRegistry.hpp"
 using namespace std;
 
-list<String> CapabilityRegistry::listCapabilities()
+list<string> CapabilityRegistry::listCapabilities()
 {
-    list<String> capabilityList;
+    list<string> capabilityList;
 
     for (auto it = begin(); it != end(); ++it)
     {
@@ -13,11 +13,11 @@ list<String> CapabilityRegistry::listCapabilities()
     return capabilityList;
 }
 
-list<std::pair<String,String>> CapabilityRegistry::getAllReadings() {
-    list<std::pair<String,String>> ret;
+list<std::pair<string,string>> CapabilityRegistry::getAllReadings() {
+    list<std::pair<string,string>> ret;
     for (auto it = begin(); it != end(); ++it)
     {
-        ret.push_back( std::pair<String,String>((*it)->getName(),(*it)->getValue()));
+        ret.push_back( std::pair<string,string>((*it)->getName(),(*it)->getValue()));
     }
     return ret;
 }

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: white
+        }
+
+        .config-section {
+            border: 0;
+            border-radius: 2px;
+            width: 300pt;
+            box-shadow:1px 1px 1px 1px lightgray;
+            margin-top: 10pt;
+            margin-bottom: 25pt;
+        }
+
+
+        .field {
+            margin-top: 5px;
+        }
+
+        .field label {
+            width: 120pt;
+            display: inline-block;
+            text-align: right;
+            margin-right: 10pt;
+            font-weight: bolder
+        }
+        .field input[type=text], .field input[type=password]  {
+            width: 140pt;
+        }
+
+        h1,
+        label,
+        h2,
+        h3,
+        p {
+            color: #555555;
+            font-family: Arial, Helvetica, sans-serif
+        }
+
+        .fs-save-btn {
+            margin-top: 10pt;
+            margin-left: 132pt;
+            width: 143pt;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="config-section-main">
+    <form id="ip-configuration-form">
+
+        <h2> Wifi configuration</h2>
+        <fieldset class="config-section">
+            <div class="field">
+                <label for="wifi-ap-name">Wi-fi access point SSID</label>
+                <input type="text" id="wifi-ap-setting">
+            </div>
+            <div class="field">
+                <label for="wifi-ap-password">AP password</label>
+                <input type="password" id="wifi-ap-setting">
+            </div>
+            <button class="fs-save-btn" id=" save-ap-config">Check</button>
+            <button class="fs-save-btn" id=" save-ap-config">Save AP config</button>
+        </fieldset>
+
+        <h2>
+            Data collection endpoint
+        </h2>
+
+        <fieldset class="config-section">
+            <div class="field">
+
+                <label for="connectivity-type-ws">Embedded webserver</label>
+                <input type="radio" name="connectivity_type" id='connectivity-type-ws'>
+               
+            </div><div class="field">
+                <label for="connectivity-type-mqtt">Mqtt endpoint</label>
+                <input type="radio" name="connectivity_type" id='connectivity-type-mqtt'>
+
+        </div>
+        </fieldset>
+
+        <h2>MQTT Settings</h2>
+        <fieldset class="config-section">
+                <div class="field">
+                        <label for="mqtt-address">MQTT Address</label>
+                        <input type="text" id="mqtt-address">
+                    </div>
+                    <div class="field">
+                            <label for="mqtt-producer-name">MQTT Producer name</label>
+                            <input type="text" id="mqtt-producer-name">
+                    </div>
+                    <div class="field">
+                        <label for="wifi-ap-password">Authentication required</label>
+                        <input type="checkbox" id="wifi-ap-setting">
+                    </div>
+
+                    <div class="field">
+                            <label for="wifi-ap-name">MQTT user</label>
+                            <input type="text" id="wifi-ap-setting">
+                        </div>
+                        <div class="field">
+                            <label for="wifi-ap-password">MQTT password</label>
+                            <input type="password" id="wifi-ap-setting">
+                        </div>
+                        <button class="fs-save-btn" id=" save-ap-config">Save MQTT config</button>
+        </fieldset>
+
+    </form>
+</div>
+</body>
+
+</html>

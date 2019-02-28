@@ -1,7 +1,8 @@
-#include <Arduino.h>
+#include <string>
+#include <memory>
+
 #include "SampleDriver.hpp"
 #include "device/BaseCapability.hpp"
-#include <memory>
 
 #define SAMPLE_CAP "WOOF"
 
@@ -10,21 +11,20 @@ bool SampleDriver::isOnline() {
     return true;
 }
 
-String SampleDriver::getName() {
+string SampleDriver::getName() {
     return capabilityName;
 }
 
-String SampleDriver::getValue() {
+string SampleDriver::getValue() {
     doSomeSampleMagic();
     return "woof woof";
 }
 
 void SampleDriver::doSomeSampleMagic() {
-    Serial.println("BOO WOO CAPABILITY MAGIC HAS OCCURED\n");
-    Serial.println("Behold the serial writer you have invoked\n");
+    //Some platform-agnostic magic
 }    
 
-SampleDriver::SampleDriver(String name) {
+SampleDriver::SampleDriver(string name) {
     deviceName = name;
     getWoofValueDelegate = [this] { return this->getValue(); };
     driverOnlineDelegate = [this] { return this->isOnline(); };

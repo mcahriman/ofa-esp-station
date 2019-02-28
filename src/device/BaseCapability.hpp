@@ -1,19 +1,19 @@
 #pragma once
-
-#include <Arduino.h>
+#include <string>
 
 #include "device/ICapability.hpp"
+#include <functional>
 
 class BaseCapability : public ICapability
 {
 public:
-  BaseCapability(String name, std::function<String()>, std::function<bool()>);
-  virtual String getName();
-  virtual String getValue();
+  BaseCapability(string name, std::function<string()>, std::function<bool()>);
+  virtual string getName();
+  virtual string getValue();
   virtual bool isOnline();
 
 protected:
-  String name;
-  std::function<String()> valueDelegate;
-  std::function<boolean()> onlineDelegate;
+  string name;
+  std::function<string()> valueDelegate;
+  std::function<bool()> onlineDelegate;
 };

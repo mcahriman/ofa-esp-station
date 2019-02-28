@@ -13,16 +13,16 @@
 #define JSON_ARRAY_END "]"
 #define JSON_QUOTE "\""
 
-inline String utils_json_quote(String str)
+inline string utils_json_quote(string str)
 {
-    String ret = "";
+    string ret = "";
     ret += JSON_QUOTE + str + JSON_QUOTE;
     return ret;
 }
 
-inline String utils_json_quote_conditional(String str)
+inline string utils_json_quote_conditional(string str)
 {
-    if (str.startsWith(JSON_OBJECT_BEGIN) || str.startsWith(JSON_ARRAY_BEGIN))
+    if (str.find(JSON_OBJECT_BEGIN) == 0 || str.find(JSON_ARRAY_BEGIN) == 0)
     {
         return str;
     }
@@ -30,9 +30,9 @@ inline String utils_json_quote_conditional(String str)
         return utils_json_quote(str);
 }
 
-String utils_json_array(std::list<String> parts)
+string utils_json_array(std::list<string> parts)
 {
-    String ret = JSON_ARRAY_BEGIN;
+    string ret = JSON_ARRAY_BEGIN;
     for (auto iter = parts.begin(); iter != parts.end(); ++iter)
     {
         if (iter != parts.begin()) {
@@ -44,9 +44,9 @@ String utils_json_array(std::list<String> parts)
     return ret;
 }
 
-String utils_json_object(std::list<std::pair<String, String>> dict)
+string utils_json_object(std::list<std::pair<string, string>> dict)
 {
-    String ret = JSON_OBJECT_BEGIN;
+    string ret = JSON_OBJECT_BEGIN;
     for (auto iter = dict.begin(); iter != dict.end(); ++iter)
     {
         if (iter != dict.begin())
