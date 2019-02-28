@@ -1,9 +1,10 @@
 #include "BaseCapability.hpp"
 #include <Arduino.h>
 
-BaseCapability::BaseCapability(String name, std::function<String()> valueFunc, std::function<bool()> onlineFunc) {
+BaseCapability::BaseCapability(String capName, std::function<String()> valueFunc, std::function<bool()> onlineFunc) {
     valueDelegate = valueFunc;
     onlineDelegate = onlineFunc;
+    name = capName;
 }
 
 String BaseCapability::getName() {

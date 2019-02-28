@@ -15,10 +15,13 @@ class SampleDriver : public IDriver
 
  private:
    void doSomeSampleMagic();
-   String capabilityName = "SampleCapabilityDefault";
-   String getValue();
+   String driverName = "SampleDriverDefault";
+   String getSomeValue();
+   String getSomeAnotherValue();
    String deviceName;
    CapabilityRegistry capabilities;
+   
    std::function<bool()> driverOnlineDelegate;
    std::function<String()> getWoofValueDelegate;
+   std::function<String()> getKtulhuFhtagnDelegate;
 };

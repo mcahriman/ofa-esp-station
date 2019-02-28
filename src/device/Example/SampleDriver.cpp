@@ -11,12 +11,17 @@ bool SampleDriver::isOnline() {
 }
 
 String SampleDriver::getName() {
-    return capabilityName;
+    return deviceName;
 }
 
-String SampleDriver::getValue() {
+String SampleDriver::getSomeValue() {
     doSomeSampleMagic();
     return "woof woof";
+}
+
+
+String SampleDriver::getSomeAnotherValue() {
+    return "Ktulkhu fhtagn";
 }
 
 void SampleDriver::doSomeSampleMagic() {
@@ -26,7 +31,9 @@ void SampleDriver::doSomeSampleMagic() {
 
 SampleDriver::SampleDriver(String name) {
     deviceName = name;
-    getWoofValueDelegate = [this] { return this->getValue(); };
+    getWoofValueDelegate = [this] { return this->getSomeValue(); };
+    getKtulhuFhtagnDelegate = [this] { return this->getSomeAnotherValue(); };
     driverOnlineDelegate = [this] { return this->isOnline(); };
-    capabilities.push_back(unique_ptr<ICapability>(new BaseCapability("WoofValue", getWoofValueDelegate, driverOnlineDelegate)));
+    capabilities.registerCapability(new BaseCapability("WoofValue", getWoofValueDelegate, driverOnlineDelegate));
+    capabilities.registerCapability(new BaseCapability("FhthagnVal", getKtulhuFhtagnDelegate, driverOnlineDelegate));
 }
