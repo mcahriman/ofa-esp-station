@@ -1,4 +1,4 @@
-#Todo list:
+# Todo list:
 sorted by whatever
 
 - Pools, Registries etc naming should become more consistant, need to get an idea for separation between driver and device
@@ -6,7 +6,7 @@ sorted by whatever
 - (Impl) filesystem and toolchain
 - Unit tests!
 
-#versions
+# Versions
 
 ## 1.x (sealed)
 
