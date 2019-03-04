@@ -5,5 +5,5 @@
 
 class DriverRegistry : public std::list<IDriver> {
     public:
-        DriverRegistry();
+     DriverRegistry();
 };
