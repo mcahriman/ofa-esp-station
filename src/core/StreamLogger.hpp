@@ -13,6 +13,10 @@ public:
     StreamLogger(Stream*);
     virtual void Log(LogLevel, const char*);
 
+protected:
+    virtual const char* getLogFormatStr();
+
 private:
     Stream* stream;
+    static const char* logFormatStr;
 };

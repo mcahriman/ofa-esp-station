@@ -3,7 +3,7 @@
 #include <list>
 #include "IDriver.hpp"
 
-class DriverRegistry : public std::list<IDriver> {
+class DriverRegistry : public std::list<IDriver*> {
     public:
      DriverRegistry();
 };

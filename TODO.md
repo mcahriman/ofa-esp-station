@@ -29,12 +29,25 @@ sorted by whatever
 
 ## 3.x (planned) "scope-crêpe"
 
+
 - Connected devices are configured in arbitrary way
   - fetch driverParameters;
   - instantiate devices based on driverParameters configuration (pins, etc)
   - configurable derp sleep?
+
 - JSON Schema support for all json fans
+
+- Security features (apikeys, protected  channel, etc)
+
 - Technical stuff
+  - asynchronous driver loading
   - mitigate heap fragmentation issues
   - finally stabilize naming convention and API
 
+- Make stuff arduino-free (Still c++14+)
+- Implement ioctl capabilities (Allow device control, mode switch, etc)
+    - make ioctl controllable via mqtt client/web server
+    - create base GPIOCTL driver
+
+## X.x RIIR
+  - maybe

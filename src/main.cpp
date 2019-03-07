@@ -14,10 +14,14 @@ void setup()
   Serial.begin(115200);
   station_system.setLogger(&logger);
   station_system.startUp();
-
 }
 
 void loop()
 {
-  //sleep checks
+  static unsigned long last_health_check = 0;
+  unsigned long currentTime = millis(); 
+  if (last_health_check !=  currentTime && millis() % 30000 == 0) {
+    station_system.healthCheck();
+    last_health_check = currentTime;
+  }
 }

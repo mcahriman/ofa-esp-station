@@ -13,7 +13,6 @@ class CapabilityRegistry {
         list<std::pair<String,String>> getAllReadings();
         list<String> listCapabilities();
         void registerCapability( ICapability *);
-
     private:
         list<shared_ptr<ICapability>> capabilities;
 };
