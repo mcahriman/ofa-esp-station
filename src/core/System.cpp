@@ -2,6 +2,7 @@
 
 #include "device/DHT/DHTDriver.hpp"
 #include "device/Example/SampleDriver.hpp"
+#include "device/Wifi/WifiDriver.hpp"
 
 #include "util/Utils.hpp"
 
@@ -21,6 +22,14 @@ void System::startUp() {
     logger->Log(LogLevel::INFO, "System startup sequence initialized lol");
     // check mode (configuration or work)
     // here say if it is ok
+
+    logger->Log(LogLevel::TRACE, "Connecting to Wifi");
+    WifiDriver* wifiDriver = new WifiDriver();
+    wifiDriver->setCredentials(AP_NAME, AP_PASSWD);
+    wifiDriver->connect();
+
+    driverRegistry->push_back(wifiDriver);
+
 
     logger->Log(LogLevel::TRACE,"Adding DHT22 Driver");
     driverRegistry->push_back(new DHTDriver("DHT22"));
