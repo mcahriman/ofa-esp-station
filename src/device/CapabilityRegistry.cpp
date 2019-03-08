@@ -24,3 +24,14 @@ list<std::pair<String,String>> CapabilityRegistry::getAllReadings() {
     }
     return ret;
 }
+
+list<std::pair<String,String>> CapabilityRegistry::getReadingsByType(ICapabilityType capabilityType) {
+    list<std::pair<String,String>> ret;
+    for (auto it = capabilities.begin(); it != capabilities.end(); ++it)
+    {
+        if((*it)->getCapabilityType() == capabilityType) {
+            ret.push_back( std::pair<String,String>((*it)->getName(),(*it)->getValue()));
+        }
+    }
+    return ret;
+}

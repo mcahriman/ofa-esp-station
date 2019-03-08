@@ -11,6 +11,7 @@ using namespace std;
 class CapabilityRegistry {
     public:
         list<std::pair<String,String>> getAllReadings();
+        list<std::pair<String,String>> getReadingsByType( ICapabilityType type );
         list<String> listCapabilities();
         void registerCapability( ICapability *);
     private:

@@ -17,6 +17,8 @@ class DHTDriver : public IDriver
 {
 public:
   DHTDriver(String, uint8_t pin = default_pin, SensorType SensorType = SensorType::DHT_22);
+  ~DHTDriver();
+
   CapabilityRegistry &getCapabilities() { return capabilities; }
   String getName();
   bool isOnline();

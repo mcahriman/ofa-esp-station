@@ -22,12 +22,11 @@ static const int default_tx = 12;
 class MHZ14ADriver : public IDriver {
   public:
        MHZ14ADriver(int rx = default_rx, int tx = default_tx, String name = MHZ14A_DEFAULT_NAME);
-
        MHZ14ADriver(String name) {
            MHZ14ADriver(default_rx, default_tx, name);
        };
 
-       ~MHZ14ADriver();
+       virtual ~MHZ14ADriver();
 
        bool isValid();
        String getName();

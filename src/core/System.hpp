@@ -32,4 +32,6 @@ class System {
     private:
         shared_ptr<DriverRegistry> driverRegistry;
         BaseLogger* logger;
+
+        String getDriverReadingsJson(ICapabilityType);
 };

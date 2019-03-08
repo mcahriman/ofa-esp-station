@@ -4,6 +4,8 @@
 #include "ESP8266WiFi.h"
 #include "core/StreamLogger.hpp"
 
+#include "Arduino.h"
+
 enum class WifiStatus {
     CONNECTED,
     DISCONNECTED
@@ -12,20 +14,20 @@ enum class WifiStatus {
 class WifiDriver : public IDriver
 {
   public:
-    WifiDriver();
 
-    CapabilityRegistry &getCapabilities();
+    WifiDriver(String); 
+    ~WifiDriver() {};
+
+    CapabilityRegistry& getCapabilities() { return capabilities; };
     bool isOnline();
-    
-    String getName()
-    {
-        return name;
-    }
-
+    String getName();
     void setCredentials(String SSID, String Password);
+
+
 
     //check dependencies
     void setMode(WiFiMode_t);
+    void setSleepMode(WiFiSleepType_t);
     void connect();
     WifiStatus getStatus();
     void setLogger(BaseLogger* logger);

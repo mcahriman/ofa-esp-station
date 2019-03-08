@@ -1,1 +1,2 @@
-# my fancy-shmancy readme file
+# ESP8266 based air monitoring station
+

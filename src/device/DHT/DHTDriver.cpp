@@ -64,3 +64,6 @@ void DHTDriver::initDHTDevice(uint8_t pin, SensorType sensorType)
     dhtDevice = make_shared<DHT>(pin, dhtType);
     dhtDevice->begin();
 }
+
+DHTDriver::~DHTDriver() {
+}
